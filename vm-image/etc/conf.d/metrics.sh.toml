@@ -1,0 +1,7 @@
+[template]
+src = "metrics.sh.tmpl"
+dest = "/opt/nifi/bin/metrics.sh"
+keys = [
+   "/"
+]
+reload_cmd = "bash -e /opt/nifi/bin/nifi.sh restart"

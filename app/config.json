@@ -1,0 +1,118 @@
+{
+  "type": "array",
+  "properties": [{
+      "key": "cluster",
+      "description": "cluster properties",
+      "type": "array",
+      "properties": [{
+          "key": "name",
+          "type": "string",
+          "label": "Name",
+          "description": "The name of the Nifi service",
+          "default": "Nifi",
+          "required": "no"
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "label": "Description",
+          "description": "The description of the Nifi service",
+          "default": "",
+          "required": "no"
+        },
+        {
+          "key": "resource_group",
+          "label": "Resource Configuration",
+          "description": "The resource configuration of the service.",
+          "type": "string",
+          "default": "Dev",
+          "range": ["Dev", "Base Prod", "Prod", "Super Prod"]
+        },
+        {
+          "key": "vxnet",
+          "label": "VxNet",
+          "description": "Choose a vxnet to join",
+          "type": "string",
+          "default": "",
+          "required": "yes"
+        },
+        {
+          "key": "nifi_node",
+          "label": "Participant Node",
+          "description": "Properties for participant nodes",
+          "type": "array",
+          "properties": [{
+              "key": "cpu",
+              "label": "CPU",
+              "description": "CPUs of each node",
+              "type": "integer",
+              "default": 1,
+              "range": [
+                1,
+                2,
+                4,
+                8,
+                16
+              ],
+              "required": "yes",
+              "resource_group": [1,4,8,16]
+            },
+            {
+              "key": "memory",
+              "label": "Memory",
+              "description": "Memory of each node (in MiB)",
+              "type": "integer",
+              "default": 2048,
+              "range": [
+                1024,
+                2048,
+                4096,
+                8192,
+                16384,
+                32768,
+                49152
+              ],
+              "required": "yes",
+              "resource_group": [1024,8192,32768,49152]
+            },
+            {
+              "key": "count",
+              "label": "Node Count",
+              "description": "Number of nodes",
+              "type": "integer",
+              "default": 1,
+              "range": [
+                1
+              ],
+              "required": "yes",
+              "resource_group": [1,1,1,1]
+            },
+            {
+              "key": "volume_size",
+              "label": "Volume Size",
+              "description": "The volume size for each node",
+              "type": "integer",
+              "default": 10,
+              "required": "yes",
+              "resource_group": [10,80,200,400]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "env",
+      "description": "env",
+      "type": "array",
+      "properties": [{
+        "changeable": true,
+        "default": "8080",
+        "description": "",
+        "key": "nifi_web_http_port",
+        "label": "nifi_web_http_port",
+        "required": "yes",
+        "type": "string"
+      }]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[template]
+src = "common.sh.tmpl"
+dest = "/opt/nifi/bin/common.sh"
+keys = [
+  "/",
+]
+reload_cmd = "bash -e /opt/nifi/bin/nifi.sh restart"
+

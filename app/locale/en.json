@@ -1,0 +1,22 @@
+{
+  "Participant Node": "Nifi Node",
+  "total_flow_file_repository_storage": "Flow File Repository Storage Size",
+  "content_repository_storage_utilization": "Content Repository Storage Utilization",
+  "free_non_heap": "Free Non Heap Size",
+  "max_heap": "Max Heap Size",
+  "total_threads": "Total Threads Count",
+  "daemon_threads": "Daemon Threads Count",
+  "free_heap": "Free Heap Size",
+  "available_processors": "Available Processors",
+  "heap_utilization": "Heap Utilization",
+  "flow_file_repository_storage_utilization": "Flow File Repository Storage Utilization",
+  "used_heap": "Used Heap",
+  "provenance_repository_storage_utilization": "Provenance Repository Storage Utilization",
+  "used_non_heap": "Used Non Heap",
+  "max_non_heap": "Max Non Heap",
+  "processor_load_average": "Processor Load Average",
+  "total_content_repository_storage": "Total Content Repository Storage",
+  "total_non_heap": "Total Non Heap",
+  "total_heap": "Total Heap",
+  "total_provenance_repository_storage": "Total Provenance Repository Storage"
+}

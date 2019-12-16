@@ -1,0 +1,185 @@
+{
+  "name": {{cluster.name}},
+  "description": {{cluster.description}},
+  "vxnet": {{cluster.vxnet}},
+  "nodes": [{
+    "container": {
+      "type": "kvm",
+      "zone": "pek3",
+      "image": "img-ymlopkgy"
+    },
+    "count": {{cluster.nifi_node.count}},
+    "cpu": {{cluster.nifi_node.cpu}},
+    "memory": {{cluster.nifi_node.memory}},
+    "volume": {
+      "size": {{cluster.nifi_node.volume_size}}
+    },
+    "server_id_upper_bound": 255,
+    "services": {
+      "init": {
+        "post_start_service": true,
+        "cmd": "bash -e /opt/nifi/bin/init.sh"
+      },
+      "start": {
+        "cmd": "bash -e /opt/nifi/bin/nifi.sh start"
+      },
+      "stop": {
+        "cmd": "bash -e /opt/nifi/bin/nifi.sh stop"
+      },
+      "upgrade": {
+        "cmd": "bash -e /opt/nifi/bin/init.sh"
+      }
+    },
+    "vertical_scaling_policy": "sequential"
+  }],
+  "endpoints": {
+    "client": {
+      "port": 8080,
+      "protocol": "tcp"
+    },
+    "rest": {
+      "port": 9998,
+      "protocol": "tcp"
+    }
+  },
+  "health_check": {
+    "enable": true,
+    "interval_sec": 60,
+    "timeout_sec": 10,
+    "action_timeout_sec": 30,
+    "healthy_threshold": 2,
+    "unhealthy_threshold": 2,
+    "check_cmd": "bash -e /opt/nifi/bin/healthcheck.sh",
+    "action_cmd": "bash -e /opt/nifi/bin/nifi.sh restart"
+  },
+  "monitor": {
+    "enable": true,
+    "cmd": "bash -e /opt/nifi/bin/metrics.sh",
+    "items": {
+    "total_flow_file_repository_storage": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"content_repository_storage_utilization": {
+		"unit": "%",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"free_non_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"max_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"total_threads": {
+		"unit": "",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"daemon_threads": {
+		"unit": "",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"free_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"available_processors": {
+		"unit": "",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"heap_utilization": {
+		"unit": "%",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"flow_file_repository_storage_utilization": {
+		"unit": "%",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"used_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"provenance_repository_storage_utilization": {
+		"unit": "%",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"used_non_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"max_non_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"processor_load_average": {
+		"unit": "sec",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"total_content_repository_storage": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"total_non_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"total_heap": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	},
+	"total_provenance_repository_storage": {
+		"unit": "MB",
+		"value_type": "int",
+		"statistics_type": "latest",
+		"scale_factor_when_display": 1
+	}
+    },
+    "groups": {
+	"heap":["total_non_heap","used_non_heap","free_non_heap","used_heap"],
+	"disk":["total_flow_file_repository_storage","total_content_repository_storage","total_provenance_repository_storage"]
+    },
+    "display": ["total_non_heap","used_non_heap","free_non_heap","max_non_heap","total_heap","free_heap","max_heap","available_processors","processor_load_average","total_threads","daemon_threads","total_flow_file_repository_storage","total_content_repository_storage","total_provenance_repository_storage","heap_utilization","content_repository_storage_utilization","flow_file_repository_storage_utilization","provenance_repository_storage_utilization","used_heap"],
+    "alarm": []
+  },
+  "advanced_actions": ["change_vxnet", "scale_horizontal"],
+  "env": {
+    "nifi_web_http_port": {{env.nifi_web_http_port}}
+  }
+}

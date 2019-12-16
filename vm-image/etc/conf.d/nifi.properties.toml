@@ -1,0 +1,7 @@
+[template]
+src = "nifi.properties.tmpl"
+dest = "/opt/nifi/conf/nifi.properties"
+keys = [
+   "/"
+]
+reload_cmd = "bash -e /opt/nifi/bin/nifi.sh restart"
