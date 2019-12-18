@@ -1,7 +1,7 @@
 {
 	"Participant Node": "Nifi节点",
 	"total_flow_file_repository_storage": "总流程文件存储",
-	"content_repository_storage_utilization": "总流程内容存储",
+	"content_repository_storage_utilization": "流程内容存储占用",
 	"free_non_heap": "非堆内存大小(空闲)",
 	"max_heap": "堆内存最大值",
 	"total_threads": "总线程数",
@@ -49,5 +49,8 @@
 	"Properties for participant nodes":"每个节点的CPU数量",
 	"Memory of each node (in MiB)":"每个节点的内存大小(MB)",
 	"Number of nodes":"节点数量",
+	"service_catalog": "服务目录",
+	"Service Name": "服务名称",
+	"Address Info": "地址信息",
 	"The volume size for each node":"每个节点的硬盘大小(GB)"
 }

@@ -1,0 +1,7 @@
+[template]
+src = "nifi-service-details.sh.tmpl"
+dest = "/opt/nifi/bin/nifi-service-details.sh"
+keys = [
+   "/"
+]
+reload_cmd = "bash -e /opt/nifi/bin/nifi.sh restart"

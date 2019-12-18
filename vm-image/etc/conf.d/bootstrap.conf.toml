@@ -1,0 +1,7 @@
+[template]
+src = "bootstrap.conf.tmpl"
+dest = "/opt/nifi/conf/bootstrap.conf"
+keys = [
+   "/"
+]
+reload_cmd = "bash -e /opt/nifi/bin/nifi.sh restart"

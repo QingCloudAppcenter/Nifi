@@ -6,7 +6,7 @@
     "container": {
       "type": "kvm",
       "zone": "pek3",
-      "image": "img-ymlopkgy"
+      "image": "img-h6v8nmou"
     },
     "count": {{cluster.nifi_node.count}},
     "cpu": {{cluster.nifi_node.cpu}},
@@ -14,7 +14,9 @@
     "volume": {
       "size": {{cluster.nifi_node.volume_size}}
     },
+    "instance_class":{{cluster.nifi_node.instance_class}},
     "server_id_upper_bound": 255,
+    "user_access": true,
     "services": {
       "init": {
         "post_start_service": true,
@@ -33,12 +35,8 @@
     "vertical_scaling_policy": "sequential"
   }],
   "endpoints": {
-    "client": {
-      "port": 8080,
-      "protocol": "tcp"
-    },
-    "rest": {
-      "port": 9998,
+    "http": {
+      "port": {{env.nifi_web_http_port}},
       "protocol": "tcp"
     }
   },
@@ -134,12 +132,6 @@
 		"statistics_type": "latest",
 		"scale_factor_when_display": 1
 	},
-	"max_non_heap": {
-		"unit": "MB",
-		"value_type": "int",
-		"statistics_type": "latest",
-		"scale_factor_when_display": 1
-	},
 	"processor_load_average": {
 		"unit": "sec",
 		"value_type": "int",
@@ -175,11 +167,17 @@
 	"heap":["total_non_heap","used_non_heap","free_non_heap","used_heap"],
 	"disk":["total_flow_file_repository_storage","total_content_repository_storage","total_provenance_repository_storage"]
     },
-    "display": ["total_non_heap","used_non_heap","free_non_heap","max_non_heap","total_heap","free_heap","max_heap","available_processors","processor_load_average","total_threads","daemon_threads","total_flow_file_repository_storage","total_content_repository_storage","total_provenance_repository_storage","heap_utilization","content_repository_storage_utilization","flow_file_repository_storage_utilization","provenance_repository_storage_utilization","used_heap"],
+    "display": ["total_non_heap","used_non_heap","free_non_heap","total_heap","free_heap","max_heap","available_processors","processor_load_average","total_threads","daemon_threads","total_flow_file_repository_storage","total_content_repository_storage","total_provenance_repository_storage","heap_utilization","content_repository_storage_utilization","flow_file_repository_storage_utilization","provenance_repository_storage_utilization","used_heap"],
     "alarm": []
   },
-  "advanced_actions": ["change_vxnet", "scale_horizontal"],
+  "advanced_actions": ["change_vxnet"],
   "env": {
     "nifi_web_http_port": {{env.nifi_web_http_port}}
-  }
+  },
+  "display_tabs": {
+        "service_catalog": {
+            "cmd": "bash /opt/nifi/bin/nifi-service-details.sh",
+            "timeout": 10
+        }
+    }
 }

@@ -25,7 +25,7 @@
           "label": "Resource Configuration",
           "description": "The resource configuration of the service.",
           "type": "string",
-          "default": "Dev",
+          "default": "Prod",
           "range": ["Dev", "Base Prod", "Prod", "Super Prod"]
         },
         {
@@ -55,7 +55,20 @@
                 16
               ],
               "required": "yes",
-              "resource_group": [1,4,8,16]
+              "resource_group": [1, 4, 8, 16]
+            },
+            {
+              "key": "instance_class",
+              "label": "resource type",
+              "description": "The instance type for the cluster to run, such as standard, enterprise1",
+              "type": "integer",
+              "default": 1,
+              "range": [
+                101,
+                202
+              ],
+              "required": "yes",
+              "resource_group": [101, 202, 202, 202]
             },
             {
               "key": "memory",
@@ -73,7 +86,7 @@
                 49152
               ],
               "required": "yes",
-              "resource_group": [1024,8192,32768,49152]
+              "resource_group": [1024, 8192, 32768, 49152]
             },
             {
               "key": "count",
@@ -85,7 +98,7 @@
                 1
               ],
               "required": "yes",
-              "resource_group": [1,1,1,1]
+              "resource_group": [1, 1, 1, 1]
             },
             {
               "key": "volume_size",
@@ -94,7 +107,7 @@
               "type": "integer",
               "default": 10,
               "required": "yes",
-              "resource_group": [10,80,200,400]
+              "resource_group": [10, 80, 200, 400]
             }
           ]
         }

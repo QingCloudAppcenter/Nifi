@@ -1,0 +1,9 @@
+cat <<EOF
+{
+    "labels": ["Service Name", "Address Info"],
+    "data":
+    [
+        ["web page url", "http://{{getv "/host/ip" "localhost"}}:{{getv "/env/nifi_web_http_port"}}/nifi"]
+    ]
+}
+EOF
