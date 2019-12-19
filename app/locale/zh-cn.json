@@ -33,6 +33,7 @@
 	"nifi_cluster_firewall_file": "防火墙文件",
 	"nifi_zookeeper_connect_string": "ZK连接字符串",
 	"Name":"名称",
+	"resource type":"资源类型",
 	"Description":"描述",
 	"Memory":"内存",
 	"Instance Class":"主机类型",

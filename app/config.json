@@ -55,7 +55,7 @@
                 16
               ],
               "required": "yes",
-              "resource_group": [1, 4, 8, 16]
+              "resource_group": [1, 2, 4, 8]
             },
             {
               "key": "instance_class",
@@ -82,11 +82,10 @@
                 4096,
                 8192,
                 16384,
-                32768,
-                49152
+                32768
               ],
               "required": "yes",
-              "resource_group": [1024, 8192, 32768, 49152]
+              "resource_group": [1024, 8192, 16384, 32768]
             },
             {
               "key": "count",
