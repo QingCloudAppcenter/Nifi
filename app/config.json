@@ -60,7 +60,7 @@
             {
               "key": "instance_class",
               "label": "resource type",
-              "description": "The instance type for the cluster to run, such as standard, enterprise1",
+              "description": "The instance type for the cluster to run",
               "type": "integer",
               "default": 1,
               "range": [

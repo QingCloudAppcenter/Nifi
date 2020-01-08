@@ -53,5 +53,8 @@
 	"service_catalog": "服务目录",
 	"Service Name": "服务名称",
 	"Address Info": "地址信息",
-	"The volume size for each node":"每个节点的硬盘大小(GB)"
+	"The volume size for each node":"每个节点的硬盘大小(GB)",
+	"CPUs of each node":"每个节点CPU的数量",
+	"The instance type for the cluster to run":"集群上每个实例的资源类型",
+	"Choose a vxnet to join":"选择要加入的vxnet"
 }
